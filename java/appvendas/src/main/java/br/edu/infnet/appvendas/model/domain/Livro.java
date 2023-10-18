@@ -1,5 +1,6 @@
 package br.edu.infnet.appvendas.model.domain;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Livro extends Produto {
@@ -8,7 +9,7 @@ public class Livro extends Produto {
     }
 
     public String autor;
-    public Date data;
+    public LocalDate data;
     public String genero;
 
     public String getAutor() {
@@ -19,11 +20,11 @@ public class Livro extends Produto {
         this.autor = autor;
     }
 
-    public Date getData() {
+    public LocalDate getData() {
         return data;
     }
 
-    public void setData(Date data) {
+    public void setData(LocalDate data) {
         this.data = data;
     }
 
@@ -38,8 +39,8 @@ public class Livro extends Produto {
     @Override
     public String toString() {
         return "Livro{" +
-                ", descricao='" + descricao + '\'' +
-                "autor='" + autor + '\'' +
+                "descricao='" + descricao + '\'' +
+                ", autor='" + autor + '\'' +
                 ", data=" + data +
                 ", genero='" + genero + '\'' +
                 '}';

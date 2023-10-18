@@ -1,7 +1,7 @@
 package br.edu.infnet.appvendas.model.domain;
 
-public class Moveis  extends Produto {
-    public Moveis() {
+public class Movel extends Produto {
+    public Movel() {
     }
 
     public String comodo;
@@ -25,9 +25,9 @@ public class Moveis  extends Produto {
 
     @Override
     public String toString() {
-        return "Moveis{" +
-                ", descricao='" + descricao + '\'' +
-                "comodo='" + comodo + '\'' +
+        return "Movel{" +
+                "descricao='" + descricao + '\'' +
+                ", comodo='" + comodo + '\'' +
                 ", material='" + material + '\'' +
                 '}';
     }
