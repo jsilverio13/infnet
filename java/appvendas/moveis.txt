@@ -1,0 +1,10 @@
+Cadeira de Jantar;1001;129.99;true;Sala de Jantar;Madeira
+Estante de Madeira;1002;189.50;true;Sala de Estar;MDF
+Sofa de Couro;1003;799.99;false;Sala de Estar;Couro
+Mesa de Centro;1004;49.99;true;Sala de Estar;Vidro
+Cama King Size;1005;499.99;true;Quarto;Madeira
+Poltrona Reclinavel;1006;279.90;false;Sala de Estar;Couro
+Estante de Livros;1007;119.99;true;Escritorio;MDF
+Mesa de Escritorio;1008;199.50;true;Escritorio;Aco
+Mesa de Cozinha;1009;149.99;false;Cozinha;Granito
+Guarda-Roupas;1010;349.99;true;Quarto;MDF

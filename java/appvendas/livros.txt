@@ -1,0 +1,10 @@
+O Senhor dos Aneis;2001;19.99;true;J.R.R. Tolkien;2003-05-12;Fantasia
+Dom Casmurro;2002;9.99;true;Machado de Assis;1995-08-30;Realismo
+Harry Potter e a Pedra Filosofal;2003;15.50;true;J.K. Rowling;2000-11-10;Fantasia
+1984;2004;12.75;true;George Orwell;1990-03-04;Ficcao Distopica
+Cem Anos de Solidao;2005;14.99;true;Gabriel Garcia Marquez;1981-06-22;Realismo Magico
+A Metamorfose;2006;8.99;true;Franz Kafka;1915-09-20;Ficcao
+Percy Jackson e o Ladrao de Raios;2007;11.25;true;Rick Riordan;2006-06-28;Fantasia
+Crime e Castigo;2008;16.99;true;Fiodor Dostoievski;1866-01-12;Realismo
+A Menina que Roubava Livros;2009;13.75;true;Markus Zusak;2005-09-03;Historia
+O Grande Gatsby;2010;10.50;true;F. Scott Fitzgerald;1925-04-10;Romance
