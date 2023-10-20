@@ -7,6 +7,7 @@ public class Produto {
     public int codigo;
     public float preco;
     public boolean estoque;
+    public String tipoProduto;
 
 
     public String getDescricao() {
@@ -41,10 +42,19 @@ public class Produto {
         this.estoque = estoque;
     }
 
+    public String getTipoProduto() {
+        return tipoProduto;
+    }
+
+    public void setTipoProduto(String tipoProduto) {
+        this.tipoProduto = tipoProduto;
+    }
+
     @Override
     public String toString() {
         return "Produto{" +
                 "descricao='" + descricao + '\'' +
+                ", tipoProduto=" + tipoProduto +
                 ", codigo=" + codigo +
                 ", preco=" + preco +
                 ", estoque=" + estoque +

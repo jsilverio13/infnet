@@ -1,0 +1,21 @@
+M;Cadeira de Jantar;1001;129.99;true;Sala de Jantar;Madeira
+M;Estante de Madeira;1002;189.50;true;Sala de Estar;MDF
+M;Sofa de Couro;1003;799.99;false;Sala de Estar;Couro
+M;Mesa de Centro;1004;49.99;true;Sala de Estar;Vidro
+M;Cama King Size;1005;499.99;true;Quarto;Madeira
+M;Poltrona Reclinavel;1006;279.90;false;Sala de Estar;Couro
+M;Estante de Livros;1007;119.99;true;Escritorio;MDF
+M;Mesa de Escritorio;1008;199.50;true;Escritorio;Aco
+M;Mesa de Cozinha;1009;149.99;false;Cozinha;Granito
+M;Guarda-Roupas;1010;349.99;true;Quarto;MDF
+L;O Senhor dos Aneis;2001;19.99;true;J.R.R. Tolkien;2003-05-12;Fantasia
+L;Dom Casmurro;2002;9.99;true;Machado de Assis;1995-08-30;Realismo
+L;Harry Potter e a Pedra Filosofal;2003;15.50;true;J.K. Rowling;2000-11-10;Fantasia
+L;1984;2004;12.75;true;George Orwell;1990-03-04;Ficcao Distopica
+L;Cem Anos de Solidao;2005;14.99;true;Gabriel Garcia Marquez;1981-06-22;Realismo Magico
+L;A Metamorfose;2006;8.99;true;Franz Kafka;1915-09-20;Ficcao
+L;Percy Jackson e o Ladrao de Raios;2007;11.25;true;Rick Riordan;2006-06-28;Fantasia
+L;Crime e Castigo;2008;16.99;true;Fiodor Dostoievski;1866-01-12;Realismo
+L;A Menina que Roubava Livros;2009;13.75;true;Markus Zusak;2005-09-03;Historia
+L;O Grande Gatsby;2010;10.50;true;F. Scott Fitzgerald;1925-04-10;Romance
+
