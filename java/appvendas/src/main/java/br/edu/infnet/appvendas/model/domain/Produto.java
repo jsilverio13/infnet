@@ -1,14 +1,22 @@
 package br.edu.infnet.appvendas.model.domain;
 
+import javax.persistence.*;
+
+//@MappedSuperclass
+//@Table(name = "tb_produto")
 public class Produto {
+
     public Produto() {
     }
-    public String descricao;
-    public int codigo;
-    public float preco;
-    public boolean estoque;
-    public String tipoProduto;
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    private String descricao;
+    private int codigo;
+    private float preco;
+    private boolean estoque;
+    private String tipoProduto;
 
     public String getDescricao() {
         return descricao;

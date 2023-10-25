@@ -1,11 +1,19 @@
 package br.edu.infnet.appvendas.model.domain;
 
+import javax.persistence.*;
+
+//@Entity
+//@Table(name = "tb_movel")
 public class Movel extends Produto {
     public Movel() {
     }
 
-    public String comodo;
-    public String material;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    private String comodo;
+    private String material;
 
     public String getComodo() {
         return comodo;
@@ -26,7 +34,7 @@ public class Movel extends Produto {
     @Override
     public String toString() {
         return "Movel{" +
-                "descricao='" + descricao + '\'' +
+                "descricao='" + getDescricao() + '\'' +
                 ", comodo='" + comodo + '\'' +
                 ", material='" + material + '\'' +
                 '}';
