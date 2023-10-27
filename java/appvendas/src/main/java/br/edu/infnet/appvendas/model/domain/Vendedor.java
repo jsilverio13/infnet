@@ -7,16 +7,18 @@ import java.util.List;
 @Table(name = "tb_vendedor")
 public class Vendedor {
 
-    public Vendedor (){}
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     public String nome;
     public String cpf;
     public String email;
-    @Transient
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @OneToMany
+    @JoinColumn(name = "idVendedor")
     private List<Produto> produtos;
+    public Vendedor() {
+    }
+
     public String getNome() {
         return nome;
     }
@@ -49,10 +51,19 @@ public class Vendedor {
         this.produtos = produtos;
     }
 
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
     @Override
     public String toString() {
         return "Vendedor{" +
-                "nome='" + nome + '\'' +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", email='" + email + '\'' +
                 '}';

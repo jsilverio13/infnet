@@ -10,6 +10,7 @@ import java.util.Collection;
 public class VendedorService {
 
     private final IVendedorRepository vendedorRepository;
+
     public VendedorService(IVendedorRepository vendedorRepository) {
         this.vendedorRepository = vendedorRepository;
     }

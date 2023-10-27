@@ -1,6 +1,7 @@
 package br.edu.infnet.appvendas.loaders;
 
 import br.edu.infnet.appvendas.model.domain.Movel;
+import br.edu.infnet.appvendas.model.domain.Vendedor;
 import br.edu.infnet.appvendas.model.service.MovelService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -23,16 +24,15 @@ public class MovelLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        final String arquivoMoveis  = "files/moveis.txt";
+        final String arquivoMoveis = "files/moveis.txt";
 
-        try (FileReader arquivo = new FileReader(arquivoMoveis))
-        {
+        try (FileReader arquivo = new FileReader(arquivoMoveis)) {
             BufferedReader leitura = new BufferedReader(arquivo);
             String linha = leitura.readLine();
 
             System.out.println();
             System.out.println("-------------- INICIO MOVEL LOADER --------------");
-            while(linha != null){
+            while (linha != null) {
                 Movel movel = new Movel();
 
                 String[] campos = linha.split(";");
@@ -45,16 +45,21 @@ public class MovelLoader implements ApplicationRunner {
                 movel.setComodo(campos[5]);
                 movel.setMaterial(campos[6]);
 
+                Vendedor vendedor = new Vendedor();
+                vendedor.setId(Integer.parseInt(campos[7]));
+
+                movel.setVendedor(vendedor);
+
                 movelService.incluir(movel);
 
                 linha = leitura.readLine();
             }
 
             Collection<Movel> moveis = movelService.obterLista();
-            for (Movel movel: moveis) {
+            for (Movel movel : moveis) {
                 System.out.println(movel);
             }
-            
+
             System.out.println("-------------- FIM MOVEL LOADER --------------");
         }
 

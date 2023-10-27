@@ -1,23 +1,28 @@
 package br.edu.infnet.appvendas.model.service;
 
 import br.edu.infnet.appvendas.model.domain.Livro;
+import br.edu.infnet.appvendas.model.repository.ILivroRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class LivroService {
-    public final Map<Integer, Livro> mapaLivro = new HashMap<Integer, Livro>();
-    public void incluir(Livro livro){
-        mapaLivro.put(livro.getCodigo(), livro);
-    }
-    public void excluir(Livro livro){
-        mapaLivro.remove(livro.getCodigo());
+    private final ILivroRepository livroRepository;
+
+    public LivroService(ILivroRepository livroRepository) {
+        this.livroRepository = livroRepository;
     }
 
-    public Collection<Livro> obterLista(){
-        return  mapaLivro.values();
+    public void incluir(Livro livro) {
+        livroRepository.save(livro);
+    }
+
+    public void excluir(Integer livroId) {
+        livroRepository.deleteById(livroId);
+    }
+
+    public Collection<Livro> obterLista() {
+        return (Collection<Livro>) livroRepository.findAll();
     }
 }

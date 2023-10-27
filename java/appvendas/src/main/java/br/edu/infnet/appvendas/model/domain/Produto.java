@@ -2,12 +2,10 @@ package br.edu.infnet.appvendas.model.domain;
 
 import javax.persistence.*;
 
-//@MappedSuperclass
-//@Table(name = "tb_produto")
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
+@Table(name = "tb_produto")
 public class Produto {
-
-    public Produto() {
-    }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +15,22 @@ public class Produto {
     private float preco;
     private boolean estoque;
     private String tipoProduto;
+
+    @ManyToOne
+    @JoinColumn(name = "idVendedor")
+    private Vendedor vendedor;
+
+    public Produto() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
 
     public String getDescricao() {
         return descricao;
@@ -58,14 +72,24 @@ public class Produto {
         this.tipoProduto = tipoProduto;
     }
 
+    public Vendedor getVendedor() {
+        return vendedor;
+    }
+
+    public void setVendedor(Vendedor vendedor) {
+        this.vendedor = vendedor;
+    }
+
     @Override
     public String toString() {
         return "Produto{" +
-                "descricao='" + descricao + '\'' +
-                ", tipoProduto=" + tipoProduto +
+                "id=" + id +
+                ", descricao='" + descricao + '\'' +
                 ", codigo=" + codigo +
                 ", preco=" + preco +
                 ", estoque=" + estoque +
+                ", tipoProduto='" + tipoProduto + '\'' +
+                ", vendedor=" + vendedor +
                 '}';
     }
 }

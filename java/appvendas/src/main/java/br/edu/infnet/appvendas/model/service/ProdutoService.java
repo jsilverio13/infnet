@@ -1,24 +1,37 @@
 package br.edu.infnet.appvendas.model.service;
 
-import br.edu.infnet.appvendas.model.domain.Movel;
 import br.edu.infnet.appvendas.model.domain.Produto;
+import br.edu.infnet.appvendas.model.domain.Vendedor;
+import br.edu.infnet.appvendas.model.repository.IProdutoRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class ProdutoService {
+    IProdutoRepository produtoRepository;
 
-    public final Map<Integer, Produto> mapaProduto = new HashMap<Integer, Produto>();
-    public void incluir(Produto produto){
-        mapaProduto.put(produto.getCodigo(), produto);
+    public ProdutoService(IProdutoRepository produtoRepository) {
+        this.produtoRepository = produtoRepository;
     }
-    public void excluir(Produto produto){
-        mapaProduto.remove(produto.getCodigo());
+
+    public void incluir(Produto produto) {
+        produtoRepository.save(produto);
     }
-    public Collection<Produto> obterLista(){
-        return  mapaProduto.values();
+
+    public void excluir(Integer produtoId) {
+        produtoRepository.deleteById(produtoId);
+    }
+
+    public Collection<Produto> obterLista() {
+        return (Collection<Produto>) produtoRepository.findAll();
+    }
+
+    public Collection<Produto> obterLista(Vendedor vendedor) {
+        return produtoRepository.obterLista(vendedor.getId());
+    }
+
+    public Collection<Produto> obterLista(Integer vendedorId) {
+        return produtoRepository.obterLista(vendedorId);
     }
 }

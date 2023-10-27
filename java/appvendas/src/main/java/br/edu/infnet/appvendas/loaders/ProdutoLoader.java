@@ -6,7 +6,6 @@ import br.edu.infnet.appvendas.model.domain.Movel;
 import br.edu.infnet.appvendas.model.domain.Produto;
 import br.edu.infnet.appvendas.model.domain.Vendedor;
 import br.edu.infnet.appvendas.model.service.ProdutoService;
-import br.edu.infnet.appvendas.model.service.VendedorService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -22,6 +21,7 @@ import java.util.Collection;
 public class ProdutoLoader implements ApplicationRunner {
 
     private final ProdutoService produtoService;
+
     public ProdutoLoader(ProdutoService produtoService) {
         this.produtoService = produtoService;
     }
@@ -29,20 +29,20 @@ public class ProdutoLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        final String arquivoProdutos  = "files/produtos.txt";
-        try (FileReader arquivo = new FileReader(arquivoProdutos))
-        {
+        final String arquivoProdutos = "files/produtos.txt";
+        try (FileReader arquivo = new FileReader(arquivoProdutos)) {
             BufferedReader leitura = new BufferedReader(arquivo);
             String linha = leitura.readLine();
             System.out.println();
             System.out.println("-------------- INICIO PRODUTO LOADER --------------");
 
-            while(linha != null){
+            while (linha != null) {
                 String[] campos = linha.split(";");
 
                 String tipoProduto = campos[0];
+                Vendedor vendedor = new Vendedor();
 
-                switch (tipoProduto){
+                switch (tipoProduto) {
                     case Constants.TipoProduto.Movel:
                         Movel movel = new Movel();
 
@@ -53,6 +53,10 @@ public class ProdutoLoader implements ApplicationRunner {
                         movel.setEstoque(Boolean.parseBoolean(campos[4]));
                         movel.setComodo(campos[5]);
                         movel.setMaterial(campos[6]);
+
+                        vendedor.setId(Integer.parseInt(campos[7]));
+                        movel.setVendedor(vendedor);
+
                         produtoService.incluir(movel);
                         break;
                     case Constants.TipoProduto.Livro:
@@ -66,6 +70,10 @@ public class ProdutoLoader implements ApplicationRunner {
                         livro.setAutor(campos[5]);
                         livro.setData(LocalDate.parse(campos[6]));
                         livro.setGenero(campos[7]);
+
+                        vendedor.setId(Integer.parseInt(campos[8]));
+                        livro.setVendedor(vendedor);
+
                         produtoService.incluir(livro);
                         break;
                     default:
@@ -76,11 +84,20 @@ public class ProdutoLoader implements ApplicationRunner {
             }
 
             Collection<Produto> produtos = produtoService.obterLista();
-            for (Produto produto: produtos) {
+            for (Produto produto : produtos) {
                 System.out.println(produto);
             }
 
             System.out.println("-------------- FIM PRODUTO LOADER --------------");
+        }
+
+
+        Vendedor vendedor = new Vendedor();
+        vendedor.setId(1);
+        Collection<Produto> produtos = produtoService.obterLista(vendedor);
+
+        for (Produto produto : produtos) {
+            System.out.println(produto.toString());
         }
 
     }

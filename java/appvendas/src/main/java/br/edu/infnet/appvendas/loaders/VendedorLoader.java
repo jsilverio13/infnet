@@ -2,7 +2,6 @@ package br.edu.infnet.appvendas.loaders;
 
 import br.edu.infnet.appvendas.model.domain.Vendedor;
 import br.edu.infnet.appvendas.model.service.VendedorService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
@@ -17,6 +16,7 @@ import java.util.Collection;
 public class VendedorLoader implements ApplicationRunner {
 
     private final VendedorService vendedorService;
+
     public VendedorLoader(VendedorService vendedorService) {
         this.vendedorService = vendedorService;
     }
@@ -24,15 +24,14 @@ public class VendedorLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        final String arquivoVendedor  = "files/vendedores.txt";
-        try (FileReader arquivo = new FileReader(arquivoVendedor))
-        {
+        final String arquivoVendedor = "files/vendedores.txt";
+        try (FileReader arquivo = new FileReader(arquivoVendedor)) {
             BufferedReader leitura = new BufferedReader(arquivo);
             String linha = leitura.readLine();
             System.out.println();
             System.out.println("-------------- INICIO VENDEDOR LOADER --------------");
 
-            while(linha != null){
+            while (linha != null) {
                 Vendedor vendedor = new Vendedor();
 
                 String[] campos = linha.split(";");
@@ -47,7 +46,7 @@ public class VendedorLoader implements ApplicationRunner {
             }
 
             Collection<Vendedor> vendedores = vendedorService.obterLista();
-            for (Vendedor vendedor: vendedores) {
+            for (Vendedor vendedor : vendedores) {
                 System.out.println(vendedor);
             }
 

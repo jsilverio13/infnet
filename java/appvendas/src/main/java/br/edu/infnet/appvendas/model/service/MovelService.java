@@ -1,22 +1,28 @@
 package br.edu.infnet.appvendas.model.service;
 
 import br.edu.infnet.appvendas.model.domain.Movel;
+import br.edu.infnet.appvendas.model.repository.IMovelRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
-import java.util.HashMap;
-import java.util.Map;
 
 @Service
 public class MovelService {
-    public final Map<Integer, Movel> mapamovel = new HashMap<Integer, Movel>();
-    public void incluir(Movel movel){
-        mapamovel.put(movel.getCodigo(), movel);
+    private final IMovelRepository movelRepository;
+
+    public MovelService(IMovelRepository movelRepository) {
+        this.movelRepository = movelRepository;
     }
-    public void excluir(Movel movel){
-        mapamovel.remove(movel.getCodigo());
+
+    public void incluir(Movel movel) {
+        movelRepository.save(movel);
     }
-    public Collection<Movel> obterLista(){
-        return  mapamovel.values();
+
+    public void excluir(Integer movelId) {
+        movelRepository.deleteById(movelId);
+    }
+
+    public Collection<Movel> obterLista() {
+        return (Collection<Movel>) movelRepository.findAll();
     }
 }

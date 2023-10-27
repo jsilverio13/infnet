@@ -1,19 +1,15 @@
 package br.edu.infnet.appvendas.model.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
-//@Entity
-//@Table(name = "tb_movel")
+@Entity
+@Table(name = "tb_movel")
 public class Movel extends Produto {
-    public Movel() {
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-
     private String comodo;
     private String material;
+    public Movel() {
+    }
 
     public String getComodo() {
         return comodo;

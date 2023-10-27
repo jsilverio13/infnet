@@ -1,21 +1,17 @@
 package br.edu.infnet.appvendas.model.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 import java.time.LocalDate;
-import java.util.Date;
 
-//@Entity
-//@Table(name = "tb_livro")
+@Entity
+@Table(name = "tb_livro")
 public class Livro extends Produto {
-    public Livro() {
-    }
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
     private String autor;
     private LocalDate data;
     private String genero;
+    public Livro() {
+    }
 
     public String getAutor() {
         return autor;

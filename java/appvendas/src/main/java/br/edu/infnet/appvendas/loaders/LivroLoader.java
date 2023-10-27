@@ -1,6 +1,7 @@
 package br.edu.infnet.appvendas.loaders;
 
 import br.edu.infnet.appvendas.model.domain.Livro;
+import br.edu.infnet.appvendas.model.domain.Vendedor;
 import br.edu.infnet.appvendas.model.service.LivroService;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
@@ -25,17 +26,16 @@ public class LivroLoader implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
 
-        final String arquivoLivros  = "files/livros.txt";
+        final String arquivoLivros = "files/livros.txt";
 
-        try (FileReader arquivo = new FileReader(arquivoLivros))
-        {
+        try (FileReader arquivo = new FileReader(arquivoLivros)) {
             BufferedReader leitura = new BufferedReader(arquivo);
             String linha = leitura.readLine();
 
             System.out.println();
             System.out.println("-------------- INICIO LIVRO LOADER --------------");
 
-            while(linha != null){
+            while (linha != null) {
                 Livro livro = new Livro();
 
                 String[] campos = linha.split(";");
@@ -49,13 +49,18 @@ public class LivroLoader implements ApplicationRunner {
                 livro.setData(LocalDate.parse(campos[6]));
                 livro.setGenero(campos[7]);
 
+                Vendedor vendedor = new Vendedor();
+                vendedor.setId(Integer.parseInt(campos[8]));
+
+                livro.setVendedor(vendedor);
+
                 livroService.incluir(livro);
 
                 linha = leitura.readLine();
             }
 
             Collection<Livro> livros = livroService.obterLista();
-            for (Livro livro: livros) {
+            for (Livro livro : livros) {
                 System.out.println(livro);
             }
 
