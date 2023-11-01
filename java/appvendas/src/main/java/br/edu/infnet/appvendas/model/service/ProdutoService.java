@@ -34,4 +34,8 @@ public class ProdutoService {
     public Collection<Produto> obterLista(Integer vendedorId) {
         return produtoRepository.obterLista(vendedorId);
     }
+
+    public long obterQuantidade() {
+        return produtoRepository.count();
+    }
 }

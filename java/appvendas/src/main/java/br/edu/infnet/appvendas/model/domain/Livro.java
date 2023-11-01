@@ -2,14 +2,24 @@ package br.edu.infnet.appvendas.model.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "tb_livro")
 public class Livro extends Produto {
+    @NotNull
+    @Size(min = 5, max = 300, message = "O autor deve ter entre {min} e {max} caracteres.")
     private String autor;
+
+    @NotNull(message = "A data é obrigatória")
     private LocalDate data;
+
+    @NotNull
+    @Size(min = 5, max = 500, message = "O genero deve ter entre {min} e {max} caracteres.")
     private String genero;
+
     public Livro() {
     }
 

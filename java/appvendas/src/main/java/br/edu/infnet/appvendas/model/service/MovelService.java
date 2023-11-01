@@ -25,4 +25,8 @@ public class MovelService {
     public Collection<Movel> obterLista() {
         return (Collection<Movel>) movelRepository.findAll();
     }
+
+    public long obterQuantidade() {
+        return movelRepository.count();
+    }
 }

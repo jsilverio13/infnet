@@ -25,4 +25,8 @@ public class LivroService {
     public Collection<Livro> obterLista() {
         return (Collection<Livro>) livroRepository.findAll();
     }
+
+    public long obterQuantidade() {
+        return livroRepository.count();
+    }
 }

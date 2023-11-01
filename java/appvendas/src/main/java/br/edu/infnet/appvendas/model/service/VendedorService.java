@@ -26,4 +26,8 @@ public class VendedorService {
     public Collection<Vendedor> obterLista() {
         return (Collection<Vendedor>) vendedorRepository.findAll();
     }
+
+    public long obterQuantidade() {
+        return vendedorRepository.count();
+    }
 }

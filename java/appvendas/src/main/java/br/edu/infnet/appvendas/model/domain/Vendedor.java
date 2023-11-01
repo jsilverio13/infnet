@@ -1,14 +1,18 @@
 package br.edu.infnet.appvendas.model.domain;
 
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_vendedor")
+@Table(name = "tb_vendedor", uniqueConstraints = {@UniqueConstraint(columnNames = {"cpf","email"})})
 public class Vendedor {
-
+    @Size(min = 2, max = 100, message = "O nome deve ter entre {min} e {max} caracteres.")
     public String nome;
+    @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "Favor informar o cpf no padrão XXX.XXX.XXX-XX")
     public String cpf;
+    @Size(min = 6, max = 100, message = "O email deve ter entre {min} e {max} caracteres.")
     public String email;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +20,7 @@ public class Vendedor {
     @OneToMany
     @JoinColumn(name = "idVendedor")
     private List<Produto> produtos;
+
     public Vendedor() {
     }
 

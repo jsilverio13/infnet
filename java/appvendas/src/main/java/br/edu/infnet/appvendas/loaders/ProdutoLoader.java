@@ -57,6 +57,8 @@ public class ProdutoLoader implements ApplicationRunner {
                         vendedor.setId(Integer.parseInt(campos[7]));
                         movel.setVendedor(vendedor);
 
+                        movel.setGarantia(Integer.parseInt(campos[8]));
+
                         produtoService.incluir(movel);
                         break;
                     case Constants.TipoProduto.Livro:
