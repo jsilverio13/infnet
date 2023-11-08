@@ -1,0 +1,12 @@
+nov 07, 2023 9:52:38 PM br.edu.infnet.appvendas.FileLogger logException
+SEVERE: Erro ao inserir [MOVEL]: Movel{descricao='MESA DE COZINHA', comodo='COZINHA', material='ss', garantia='24'}
+Mensagem: Validation failed for classes [br.edu.infnet.appvendas.model.domain.Movel] during persist time for groups [javax.validation.groups.Default, ]
+List of constraint violations:[
+	ConstraintViolationImpl{interpolatedMessage='O material deve conter apenas letras maiúsculas.', propertyPath=material, rootBeanClass=class br.edu.infnet.appvendas.model.domain.Movel, messageTemplate='O material deve conter apenas letras maiúsculas.'}
+]
+nov 07, 2023 9:52:38 PM br.edu.infnet.appvendas.FileLogger logException
+SEVERE: Erro ao inserir [LIVRO]: Livro{descricao='PERCY JACKSON E O LADRAO DE RAIOS', autor='RI', data=2006-06-28, genero='FANTASIA'}
+Mensagem: Validation failed for classes [br.edu.infnet.appvendas.model.domain.Livro] during persist time for groups [javax.validation.groups.Default, ]
+List of constraint violations:[
+	ConstraintViolationImpl{interpolatedMessage='O autor deve ter entre 5 e 300 caracteres.', propertyPath=autor, rootBeanClass=class br.edu.infnet.appvendas.model.domain.Livro, messageTemplate='O autor deve ter entre {min} e {max} caracteres.'}
+]

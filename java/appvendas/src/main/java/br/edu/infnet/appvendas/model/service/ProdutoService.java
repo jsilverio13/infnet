@@ -28,11 +28,11 @@ public class ProdutoService {
     }
 
     public Collection<Produto> obterLista(Vendedor vendedor) {
-        return produtoRepository.obterLista(vendedor.getId());
+        return (Collection<Produto>) produtoRepository.obterLista(vendedor.getId());
     }
 
     public Collection<Produto> obterLista(Integer vendedorId) {
-        return produtoRepository.obterLista(vendedorId);
+        return (Collection<Produto>) produtoRepository.obterLista(vendedorId);
     }
 
     public long obterQuantidade() {

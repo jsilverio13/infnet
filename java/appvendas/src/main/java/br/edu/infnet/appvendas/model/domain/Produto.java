@@ -106,7 +106,7 @@ public class Produto {
                 ", preco=" + preco +
                 ", estoque=" + estoque +
                 ", tipoProduto='" + tipoProduto + '\'' +
-                ", vendedor=" + vendedor +
+                ", vendedorId=" + vendedor.getId() +
                 '}';
     }
 }

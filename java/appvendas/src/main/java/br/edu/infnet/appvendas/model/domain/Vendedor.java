@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 import java.util.List;
 
 @Entity
-@Table(name = "tb_vendedor", uniqueConstraints = {@UniqueConstraint(columnNames = {"cpf","email"})})
+@Table(name = "tb_vendedor", uniqueConstraints = {@UniqueConstraint(columnNames = {"cpf", "email"})})
 public class Vendedor {
     @Size(min = 2, max = 100, message = "O nome deve ter entre {min} e {max} caracteres.")
     public String nome;
@@ -17,9 +17,13 @@ public class Vendedor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToMany
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "idVendedor")
     private List<Produto> produtos;
+
+    @OneToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "idEndereco")
+    private Endereco endereco;
 
     public Vendedor() {
     }
@@ -64,13 +68,23 @@ public class Vendedor {
         this.id = id;
     }
 
+    public Endereco getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(Endereco endereco) {
+        this.endereco = endereco;
+    }
+
     @Override
     public String toString() {
         return "Vendedor{" +
-                "id=" + id +
-                ", nome='" + nome + '\'' +
+                "nome='" + nome + '\'' +
                 ", cpf='" + cpf + '\'' +
                 ", email='" + email + '\'' +
+                ", id=" + id +
+                ", produtos=" + produtos.size() +
+                ", endereco=" + endereco.getCep() +
                 '}';
     }
 }

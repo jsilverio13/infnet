@@ -1,5 +1,6 @@
 package br.edu.infnet.appvendas.loaders;
 
+import br.edu.infnet.appvendas.FileLogger;
 import br.edu.infnet.appvendas.model.Constants;
 import br.edu.infnet.appvendas.model.domain.Livro;
 import br.edu.infnet.appvendas.model.domain.Movel;
@@ -11,6 +12,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+import javax.validation.ConstraintViolationException;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.time.LocalDate;
@@ -58,8 +60,11 @@ public class ProdutoLoader implements ApplicationRunner {
                         movel.setVendedor(vendedor);
 
                         movel.setGarantia(Integer.parseInt(campos[8]));
-
-                        produtoService.incluir(movel);
+                        try {
+                            produtoService.incluir(movel);
+                        } catch (ConstraintViolationException e) {
+                            FileLogger.logException("Erro ao inserir [MOVEL]: " + movel + "\nMensagem: " + e.getMessage());
+                        }
                         break;
                     case Constants.TipoProduto.Livro:
                         Livro livro = new Livro();
@@ -76,7 +81,12 @@ public class ProdutoLoader implements ApplicationRunner {
                         vendedor.setId(Integer.parseInt(campos[8]));
                         livro.setVendedor(vendedor);
 
-                        produtoService.incluir(livro);
+                        try {
+                            produtoService.incluir(livro);
+                        } catch (ConstraintViolationException e) {
+                            FileLogger.logException("Erro ao inserir [LIVRO]: " + livro + "\nMensagem: " + e.getMessage());
+                        }
+
                         break;
                     default:
                         break;

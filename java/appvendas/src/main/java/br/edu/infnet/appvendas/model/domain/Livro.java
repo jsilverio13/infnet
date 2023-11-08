@@ -50,10 +50,9 @@ public class Livro extends Produto {
     @Override
     public String toString() {
         return "Livro{" +
-                "descricao='" + getDescricao() + '\'' +
-                ", autor='" + autor + '\'' +
+                "autor='" + autor + '\'' +
                 ", data=" + data +
                 ", genero='" + genero + '\'' +
-                '}';
+                '}' +  " || " + super.toString();
     }
 }

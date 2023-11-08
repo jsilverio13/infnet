@@ -32,37 +32,5 @@ public class AppController {
         model.addAttribute("qtdLivros", movelService.obterQuantidade());
         return "home";
     }
-
-    @GetMapping(value = "/vendedor/lista")
-    public String obterVendedores(Model model) {
-        model.addAttribute("listagem", vendedorService.obterLista());
-        model.addAttribute("titulo", "Vendedores");
-
-        return showHome(model);
-    }
-
-    @GetMapping(value = "/produto/lista")
-    public String obterProdutos(Model model) {
-        model.addAttribute("titulo", "Produtos");
-        model.addAttribute("listagem", produtoService.obterLista());
-
-        return showHome(model);
-    }
-
-    @GetMapping(value = "/livro/lista")
-    public String obterLivros(Model model) {
-        model.addAttribute("titulo", "Livros");
-        model.addAttribute("listagem", livroService.obterLista());
-
-        return showHome(model);
-    }
-
-    @GetMapping(value = "/movel/lista")
-    public String obterMoveis(Model model) {
-        model.addAttribute("titulo", "Moveis");
-        model.addAttribute("listagem", movelService.obterLista());
-
-        return showHome(model);
-    }
 }
 

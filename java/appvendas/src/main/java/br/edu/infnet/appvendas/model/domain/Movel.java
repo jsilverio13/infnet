@@ -54,11 +54,10 @@ public class Movel extends Produto {
     @Override
     public String toString() {
         return "Movel{" +
-                "descricao='" + getDescricao() + '\'' +
-                ", comodo='" + comodo + '\'' +
+                "comodo='" + comodo + '\'' +
                 ", material='" + material + '\'' +
                 ", garantia='" + garantia + '\'' +
-                '}';
+                '}'  +  " || " + super.toString();
     }
 }
 
