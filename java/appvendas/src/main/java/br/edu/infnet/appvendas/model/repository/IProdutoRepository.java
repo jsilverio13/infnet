@@ -11,4 +11,6 @@ import java.util.Collection;
 public interface IProdutoRepository extends CrudRepository<Produto, Integer> {
     @Query("from Produto p where p.vendedor.id =:vendedorId")
     Collection<Produto> obterLista(Integer vendedorId);
+
+    Produto findByCodigo(Integer codigo);
 }

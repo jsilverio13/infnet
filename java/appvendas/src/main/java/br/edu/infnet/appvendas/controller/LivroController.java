@@ -1,5 +1,6 @@
 package br.edu.infnet.appvendas.controller;
 
+import br.edu.infnet.appvendas.model.domain.Livro;
 import br.edu.infnet.appvendas.model.service.LivroService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +21,18 @@ public class LivroController {
     @GetMapping(value = "/livro/{id}/excluir")
     public String excluir(@PathVariable Integer id) {
         livroService.excluir(id);
+        return "redirect:/livro/lista";
+    }
+
+    @GetMapping(value = "/livro/pesquisar")
+    public String pesquisar(Model model, String campoBusca) {
+
+        Livro livro = livroService.pesquisar(campoBusca);
+
+        if (livro != null) {
+            model.addAttribute("objeto", livro);
+            return appController.showHome(model);
+        }
         return "redirect:/livro/lista";
     }
 

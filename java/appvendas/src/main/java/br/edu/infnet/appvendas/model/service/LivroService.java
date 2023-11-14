@@ -29,4 +29,8 @@ public class LivroService {
     public long obterQuantidade() {
         return livroRepository.count();
     }
+
+    public Livro pesquisar(String autor) {
+        return livroRepository.findByAutor(autor);
+    }
 }

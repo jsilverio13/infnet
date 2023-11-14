@@ -4,6 +4,7 @@ import br.edu.infnet.appvendas.clients.IEnderecoClient;
 import br.edu.infnet.appvendas.model.domain.Endereco;
 import br.edu.infnet.appvendas.model.domain.Vendedor;
 import br.edu.infnet.appvendas.model.repository.IVendedorRepository;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import java.util.Collection;
@@ -31,8 +32,13 @@ public class VendedorService {
         vendedorRepository.deleteById(vendedorId);
     }
 
+
+    public Vendedor pesquisar(String cpf) {
+        return vendedorRepository.findByCpf(cpf);
+    }
+
     public Collection<Vendedor> obterLista() {
-        return (Collection<Vendedor>) vendedorRepository.findAll();
+        return (Collection<Vendedor>) vendedorRepository.findAll(Sort.by(Sort.Direction.ASC, "nome"));
     }
 
     public long obterQuantidade() {

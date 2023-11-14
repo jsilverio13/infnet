@@ -57,7 +57,7 @@ public class Movel extends Produto {
                 "comodo='" + comodo + '\'' +
                 ", material='" + material + '\'' +
                 ", garantia='" + garantia + '\'' +
-                '}'  +  " || " + super.toString();
+                '}' + " || " + super.toString();
     }
 }
 

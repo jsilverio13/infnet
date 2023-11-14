@@ -29,4 +29,8 @@ public class MovelService {
     public long obterQuantidade() {
         return movelRepository.count();
     }
+
+    public Movel pesquisar(String descricao) {
+        return movelRepository.findByDescricao(descricao);
+    }
 }

@@ -1,5 +1,6 @@
 package br.edu.infnet.appvendas.controller;
 
+import br.edu.infnet.appvendas.model.domain.Movel;
 import br.edu.infnet.appvendas.model.service.MovelService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +23,19 @@ public class MovelController {
 
         return "redirect:/movel/lista";
     }
+
+    @GetMapping(value = "/movel/pesquisar")
+    public String pesquisar(Model model, String campoBusca) {
+
+        Movel movel = movelService.pesquisar(campoBusca);
+
+        if (movel != null) {
+            model.addAttribute("objeto", movel);
+            return appController.showHome(model);
+        }
+        return "redirect:/movel/lista";
+    }
+
 
     @GetMapping(value = "/movel/lista")
     public String obterLista(Model model) {

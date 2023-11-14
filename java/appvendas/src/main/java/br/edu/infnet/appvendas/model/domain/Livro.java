@@ -53,6 +53,6 @@ public class Livro extends Produto {
                 "autor='" + autor + '\'' +
                 ", data=" + data +
                 ", genero='" + genero + '\'' +
-                '}' +  " || " + super.toString();
+                '}' + " || " + super.toString();
     }
 }
