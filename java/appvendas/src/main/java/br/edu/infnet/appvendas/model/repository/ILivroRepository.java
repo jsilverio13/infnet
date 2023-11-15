@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface ILivroRepository extends CrudRepository<Livro, Integer> {
-    Livro findByAutor(String autor);
+    Livro findByAutorContaining(String autor);
 }

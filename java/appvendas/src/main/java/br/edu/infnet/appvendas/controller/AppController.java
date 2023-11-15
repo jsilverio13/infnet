@@ -12,23 +12,23 @@ public class AppController {
     private final VendedorService vendedorService;
     private final LivroService livroService;
     private final MovelService movelService;
-    private final VendasService vendasService;
+    private final InformacaoService informacaoService;
 
-    public AppController(ProdutoService produtoService, VendedorService vendedorService, LivroService livroService, MovelService movelService, VendasService vendasService) {
+    public AppController(ProdutoService produtoService, VendedorService vendedorService, LivroService livroService, MovelService movelService, InformacaoService informacaoService) {
         this.produtoService = produtoService;
         this.vendedorService = vendedorService;
         this.livroService = livroService;
         this.movelService = movelService;
-        this.vendasService = vendasService;
+        this.informacaoService = informacaoService;
     }
 
     @GetMapping(value = "/")
     public String showHome(Model model) {
-        model.addAttribute("informacoes", vendasService.obterInformacao());
+        model.addAttribute("informacoes", informacaoService.obterLista());
         model.addAttribute("qtdVendedores", vendedorService.obterQuantidade());
         model.addAttribute("qtdProdutos", produtoService.obterQuantidade());
-        model.addAttribute("qtdMoveis", livroService.obterQuantidade());
-        model.addAttribute("qtdLivros", movelService.obterQuantidade());
+        model.addAttribute("qtdLivros", livroService.obterQuantidade());
+        model.addAttribute("qtdMoveis", movelService.obterQuantidade());
         return "home";
     }
 }

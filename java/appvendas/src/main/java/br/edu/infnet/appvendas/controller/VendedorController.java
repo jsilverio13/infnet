@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "vendedor")
 public class VendedorController {
 
     private final AppController appController;
@@ -18,14 +20,14 @@ public class VendedorController {
         this.vendedorService = vendedorService;
     }
 
-    @GetMapping(value = "/vendedor/{id}/excluir")
+    @GetMapping(value = "/{id}/excluir")
     public String excluir(@PathVariable Integer id) {
         vendedorService.excluir(id);
 
         return "redirect:/vendedor/lista";
     }
 
-    @GetMapping(value = "/vendedor/pesquisar")
+    @GetMapping(value = "/pesquisar")
     public String pesquisar(Model model, String campoBusca) {
 
         Vendedor vendedor = vendedorService.pesquisar(campoBusca);
@@ -37,7 +39,7 @@ public class VendedorController {
         return "redirect:/vendedor/lista";
     }
 
-    @GetMapping(value = "/vendedor/lista")
+    @GetMapping(value = "/lista")
     public String obterLista(Model model) {
         model.addAttribute("rota", "vendedor");
         model.addAttribute("listagem", vendedorService.obterLista());

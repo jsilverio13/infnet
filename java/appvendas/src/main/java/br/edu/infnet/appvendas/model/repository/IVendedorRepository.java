@@ -9,7 +9,7 @@ import java.util.List;
 
 @Repository
 public interface IVendedorRepository extends CrudRepository<Vendedor, Integer> {
-    Vendedor findByCpf(String cpf);
+    Vendedor findByCpfStartsWith(String cpf);
 
     List<Vendedor> findAll(Sort sort);
 }

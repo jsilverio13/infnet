@@ -6,8 +6,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(value = "produto")
 public class ProdutoController {
 
     private final AppController appController;
@@ -18,14 +20,14 @@ public class ProdutoController {
         this.produtoService = produtoService;
     }
 
-    @GetMapping(value = "/produto/{id}/excluir")
+    @GetMapping(value = "/{id}/excluir")
     public String excluir(@PathVariable Integer id) {
         produtoService.excluir(id);
 
         return "redirect:/produto/lista";
     }
 
-    @GetMapping(value = "/produto/pesquisar")
+    @GetMapping(value = "/pesquisar")
     public String pesquisar(Model model, String campoBusca) {
 
         Produto produto = produtoService.pesquisar(campoBusca);
@@ -37,7 +39,7 @@ public class ProdutoController {
         return "redirect:/produto/lista";
     }
 
-    @GetMapping(value = "/produto/lista")
+    @GetMapping(value = "/lista")
     public String obterLista(Model model) {
         model.addAttribute("rota", "produto");
         model.addAttribute("listagem", produtoService.obterLista());

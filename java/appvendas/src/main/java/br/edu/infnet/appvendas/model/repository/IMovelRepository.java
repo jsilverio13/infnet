@@ -6,5 +6,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IMovelRepository extends CrudRepository<Movel, Integer> {
-    Movel findByDescricao(String descricao);
+    Movel findByDescricaoContaining(String descricao);
 }

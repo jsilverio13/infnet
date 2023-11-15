@@ -31,6 +31,6 @@ public class MovelService {
     }
 
     public Movel pesquisar(String descricao) {
-        return movelRepository.findByDescricao(descricao);
+        return movelRepository.findByDescricaoContaining(descricao);
     }
 }

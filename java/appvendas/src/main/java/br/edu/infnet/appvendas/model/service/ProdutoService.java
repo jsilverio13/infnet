@@ -39,7 +39,7 @@ public class ProdutoService {
         return produtoRepository.count();
     }
 
-    public Produto pesquisar(String codigo) {
-        return produtoRepository.findByCodigo(Integer.valueOf(codigo));
+    public Produto pesquisar(String descricao) {
+        return produtoRepository.findByDescricaoContaining(descricao);
     }
 }

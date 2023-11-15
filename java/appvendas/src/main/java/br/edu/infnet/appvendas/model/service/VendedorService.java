@@ -34,7 +34,7 @@ public class VendedorService {
 
 
     public Vendedor pesquisar(String cpf) {
-        return vendedorRepository.findByCpf(cpf);
+        return vendedorRepository.findByCpfStartsWith(cpf);
     }
 
     public Collection<Vendedor> obterLista() {

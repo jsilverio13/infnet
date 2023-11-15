@@ -31,6 +31,6 @@ public class LivroService {
     }
 
     public Livro pesquisar(String autor) {
-        return livroRepository.findByAutor(autor);
+        return livroRepository.findByAutorContaining(autor);
     }
 }
